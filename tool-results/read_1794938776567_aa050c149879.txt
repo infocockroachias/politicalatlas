@@ -1,0 +1,1073 @@
+     1→---
+     2→name: UI/UX
+     3→description: "The design language that makes AI better at frontend design. 7 domain-specific references (typography, color, spatial, motion, interaction, responsive, UX writing), 20 steering commands (/audit, /critique, /polish, /distill, /animate, etc.), and curated anti-patterns. Use when building or reviewing any UI — fights AI's bias toward generic templates."
+     4→homepage: https://github.com/pbakaus/impeccable
+     5→---
+     6→
+     7→
+     8→This skill guides creation of distinctive, production-grade frontend interfaces that avoid generic "AI slop" aesthetics. Implement real working code with exceptional attention to aesthetic details and creative choices.
+     9→
+    10→## Context Gathering Protocol
+    11→
+    12→Design skills produce generic output without project context. You MUST have confirmed design context before doing any design work.
+    13→
+    14→**Required context** — every design skill needs at minimum:
+    15→- **Target audience**: Who uses this product and in what context?
+    16→- **Use cases**: What jobs are they trying to get done?
+    17→- **Brand personality/tone**: How should the interface feel?
+    18→
+    19→Individual skills may require additional context — check the skill's preparation section for specifics.
+    20→
+    21→**CRITICAL**: You cannot infer this context by reading the codebase. Code tells you what was built, not who it's for or what it should feel like. Only the creator can provide this context.
+    22→
+    23→**Gathering order:**
+    24→1. **Check current instructions (instant)**: If your loaded instructions already contain a **Design Context** section, proceed immediately.
+    25→2. **Check .impeccable.md (fast)**: If not in instructions, read `.impeccable.md` from the project root. If it exists and contains the required context, proceed.
+    26→3. **Run teach-impeccable (REQUIRED)**: If neither source has context, you MUST run {{command_prefix}}teach-impeccable NOW before doing anything else. Do NOT skip this step. Do NOT attempt to infer context from the codebase instead.
+    27→
+    28→---
+    29→
+    30→## Design Direction
+    31→
+    32→Commit to a BOLD aesthetic direction:
+    33→- **Purpose**: What problem does this interface solve? Who uses it?
+    34→- **Tone**: Pick an extreme: brutally minimal, maximalist chaos, retro-futuristic, organic/natural, luxury/refined, playful/toy-like, editorial/magazine, brutalist/raw, art deco/geometric, soft/pastel, industrial/utilitarian, etc. There are so many flavors to choose from. Use these for inspiration but design one that is true to the aesthetic direction.
+    35→- **Constraints**: Technical requirements (framework, performance, accessibility).
+    36→- **Differentiation**: What makes this UNFORGETTABLE? What's the one thing someone will remember?
+    37→
+    38→**CRITICAL**: Choose a clear conceptual direction and execute it with precision. Bold maximalism and refined minimalism both work—the key is intentionality, not intensity.
+    39→
+    40→Then implement working code that is:
+    41→- Production-grade and functional
+    42→- Visually striking and memorable
+    43→- Cohesive with a clear aesthetic point-of-view
+    44→- Meticulously refined in every detail
+    45→
+    46→## Frontend Aesthetics Guidelines
+    47→
+    48→### Typography
+    49→→ *Consult [typography reference](reference/typography.md) for scales, pairing, and loading strategies.*
+    50→
+    51→Choose fonts that are beautiful, unique, and interesting. Pair a distinctive display font with a refined body font.
+    52→
+    53→**DO**: Use a modular type scale with fluid sizing (clamp)
+    54→**DO**: Vary font weights and sizes to create clear visual hierarchy
+    55→**DON'T**: Use overused fonts—Inter, Roboto, Arial, Open Sans, system defaults
+    56→**DON'T**: Use monospace typography as lazy shorthand for "technical/developer" vibes
+    57→**DON'T**: Put large icons with rounded corners above every heading—they rarely add value and make sites look templated
+    58→
+    59→### Color & Theme
+    60→→ *Consult [color reference](reference/color-and-contrast.md) for OKLCH, palettes, and dark mode.*
+    61→
+    62→Commit to a cohesive palette. Dominant colors with sharp accents outperform timid, evenly-distributed palettes.
+    63→
+    64→**DO**: Use modern CSS color functions (oklch, color-mix, light-dark) for perceptually uniform, maintainable palettes
+    65→**DO**: Tint your neutrals toward your brand hue—even a subtle hint creates subconscious cohesion
+    66→**DON'T**: Use gray text on colored backgrounds—it looks washed out; use a shade of the background color instead
+    67→**DON'T**: Use pure black (#000) or pure white (#fff)—always tint; pure black/white never appears in nature
+    68→**DON'T**: Use the AI color palette: cyan-on-dark, purple-to-blue gradients, neon accents on dark backgrounds
+    69→**DON'T**: Use gradient text for "impact"—especially on metrics or headings; it's decorative rather than meaningful
+    70→**DON'T**: Default to dark mode with glowing accents—it looks "cool" without requiring actual design decisions
+    71→
+    72→### Layout & Space
+    73→→ *Consult [spatial reference](reference/spatial-design.md) for grids, rhythm, and container queries.*
+    74→
+    75→Create visual rhythm through varied spacing—not the same padding everywhere. Embrace asymmetry and unexpected compositions. Break the grid intentionally for emphasis.
+    76→
+    77→**DO**: Create visual rhythm through varied spacing—tight groupings, generous separations
+    78→**DO**: Use fluid spacing with clamp() that breathes on larger screens
+    79→**DO**: Use asymmetry and unexpected compositions; break the grid intentionally for emphasis
+    80→**DON'T**: Wrap everything in cards—not everything needs a container
+    81→**DON'T**: Nest cards inside cards—visual noise, flatten the hierarchy
+    82→**DON'T**: Use identical card grids—same-sized cards with icon + heading + text, repeated endlessly
+    83→**DON'T**: Use the hero metric layout template—big number, small label, supporting stats, gradient accent
+    84→**DON'T**: Center everything—left-aligned text with asymmetric layouts feels more designed
+    85→**DON'T**: Use the same spacing everywhere—without rhythm, layouts feel monotonous
+    86→
+    87→### Visual Details
+    88→**DO**: Use intentional, purposeful decorative elements that reinforce brand
+    89→**DON'T**: Use glassmorphism everywhere—blur effects, glass cards, glow borders used decoratively rather than purposefully
+    90→**DON'T**: Use rounded elements with thick colored border on one side—a lazy accent that almost never looks intentional
+    91→**DON'T**: Use sparklines as decoration—tiny charts that look sophisticated but convey nothing meaningful
+    92→**DON'T**: Use rounded rectangles with generic drop shadows—safe, forgettable, could be any AI output
+    93→**DON'T**: Use modals unless there's truly no better alternative—modals are lazy
+    94→
+    95→### Motion
+    96→→ *Consult [motion reference](reference/motion-design.md) for timing, easing, and reduced motion.*
+    97→
+    98→Focus on high-impact moments: one well-orchestrated page load with staggered reveals creates more delight than scattered micro-interactions.
+    99→
+   100→**DO**: Use motion to convey state changes—entrances, exits, feedback
+   101→**DO**: Use exponential easing (ease-out-quart/quint/expo) for natural deceleration
+   102→**DO**: For height animations, use grid-template-rows transitions instead of animating height directly
+   103→**DON'T**: Animate layout properties (width, height, padding, margin)—use transform and opacity only
+   104→**DON'T**: Use bounce or elastic easing—they feel dated and tacky; real objects decelerate smoothly
+   105→
+   106→### Interaction
+   107→→ *Consult [interaction reference](reference/interaction-design.md) for forms, focus, and loading patterns.*
+   108→
+   109→Make interactions feel fast. Use optimistic UI—update immediately, sync later.
+   110→
+   111→**DO**: Use progressive disclosure—start simple, reveal sophistication through interaction (basic options first, advanced behind expandable sections; hover states that reveal secondary actions)
+   112→**DO**: Design empty states that teach the interface, not just say "nothing here"
+   113→**DO**: Make every interactive surface feel intentional and responsive
+   114→**DON'T**: Repeat the same information—redundant headers, intros that restate the heading
+   115→**DON'T**: Make every button primary—use ghost buttons, text links, secondary styles; hierarchy matters
+   116→
+   117→### Responsive
+   118→→ *Consult [responsive reference](reference/responsive-design.md) for mobile-first, fluid design, and container queries.*
+   119→
+   120→**DO**: Use container queries (@container) for component-level responsiveness
+   121→**DO**: Adapt the interface for different contexts—don't just shrink it
+   122→**DON'T**: Hide critical functionality on mobile—adapt the interface, don't amputate it
+   123→
+   124→### UX Writing
+   125→→ *Consult [ux-writing reference](reference/ux-writing.md) for labels, errors, and empty states.*
+   126→
+   127→**DO**: Make every word earn its place
+   128→**DON'T**: Repeat information users can already see
+   129→
+   130→---
+   131→
+   132→## The AI Slop Test
+   133→
+   134→**Critical quality check**: If you showed this interface to someone and said "AI made this," would they believe you immediately? If yes, that's the problem.
+   135→
+   136→A distinctive interface should make someone ask "how was this made?" not "which AI made this?"
+   137→
+   138→Review the DON'T guidelines above—they are the fingerprints of AI-generated work from 2024-2025.
+   139→
+   140→---
+   141→
+   142→## Implementation Principles
+   143→
+   144→Match implementation complexity to the aesthetic vision. Maximalist designs need elaborate code with extensive animations and effects. Minimalist or refined designs need restraint, precision, and careful attention to spacing, typography, and subtle details.
+   145→
+   146→Interpret creatively and make unexpected choices that feel genuinely designed for the context. No design should be the same. Vary between light and dark themes, different fonts, different aesthetics. NEVER converge on common choices across generations.
+   147→
+   148→Remember: {{model}} is capable of extraordinary creative work. Don't hold back—show what can truly be created when thinking outside the box and committing fully to a distinctive vision.
+   149→
+   150→---
+   151→
+   152→# Reference: typography
+   153→
+   154→# Typography
+   155→
+   156→## Classic Typography Principles
+   157→
+   158→### Vertical Rhythm
+   159→
+   160→Your line-height should be the base unit for ALL vertical spacing. If body text has `line-height: 1.5` on `16px` type (= 24px), spacing values should be multiples of 24px. This creates subconscious harmony—text and space share a mathematical foundation.
+   161→
+   162→### Modular Scale & Hierarchy
+   163→
+   164→The common mistake: too many font sizes that are too close together (14px, 15px, 16px, 18px...). This creates muddy hierarchy.
+   165→
+   166→**Use fewer sizes with more contrast.** A 5-size system covers most needs:
+   167→
+   168→| Role | Typical Ratio | Use Case |
+   169→|------|---------------|----------|
+   170→| xs | 0.75rem | Captions, legal |
+   171→| sm | 0.875rem | Secondary UI, metadata |
+   172→| base | 1rem | Body text |
+   173→| lg | 1.25-1.5rem | Subheadings, lead text |
+   174→| xl+ | 2-4rem | Headlines, hero text |
+   175→
+   176→Popular ratios: 1.25 (major third), 1.333 (perfect fourth), 1.5 (perfect fifth). Pick one and commit.
+   177→
+   178→### Readability & Measure
+   179→
+   180→Use `ch` units for character-based measure (`max-width: 65ch`). Line-height scales inversely with line length—narrow columns need tighter leading, wide columns need more.
+   181→
+   182→**Non-obvious**: Increase line-height for light text on dark backgrounds. The perceived weight is lighter, so text needs more breathing room. Add 0.05-0.1 to your normal line-height.
+   183→
+   184→## Font Selection & Pairing
+   185→
+   186→### Choosing Distinctive Fonts
+   187→
+   188→**Avoid the invisible defaults**: Inter, Roboto, Open Sans, Lato, Montserrat. These are everywhere, making your design feel generic. They're fine for documentation or tools where personality isn't the goal—but if you want distinctive design, look elsewhere.
+   189→
+   190→**Better Google Fonts alternatives**:
+   191→- Instead of Inter → **Instrument Sans**, **Plus Jakarta Sans**, **Outfit**
+   192→- Instead of Roboto → **Onest**, **Figtree**, **Urbanist**
+   193→- Instead of Open Sans → **Source Sans 3**, **Nunito Sans**, **DM Sans**
+   194→- For editorial/premium feel → **Fraunces**, **Newsreader**, **Lora**
+   195→
+   196→**System fonts are underrated**: `-apple-system, BlinkMacSystemFont, "Segoe UI", system-ui` looks native, loads instantly, and is highly readable. Consider this for apps where performance > personality.
+   197→
+   198→### Pairing Principles
+   199→
+   200→**The non-obvious truth**: You often don't need a second font. One well-chosen font family in multiple weights creates cleaner hierarchy than two competing typefaces. Only add a second font when you need genuine contrast (e.g., display headlines + body serif).
+   201→
+   202→When pairing, contrast on multiple axes:
+   203→- Serif + Sans (structure contrast)
+   204→- Geometric + Humanist (personality contrast)
+   205→- Condensed display + Wide body (proportion contrast)
+   206→
+   207→**Never pair fonts that are similar but not identical** (e.g., two geometric sans-serifs). They create visual tension without clear hierarchy.
+   208→
+   209→### Web Font Loading
+   210→
+   211→The layout shift problem: fonts load late, text reflows, and users see content jump. Here's the fix:
+   212→
+   213→```css
+   214→/* 1. Use font-display: swap for visibility */
+   215→@font-face {
+   216→  font-family: 'CustomFont';
+   217→  src: url('font.woff2') format('woff2');
+   218→  font-display: swap;
+   219→}
+   220→
+   221→/* 2. Match fallback metrics to minimize shift */
+   222→@font-face {
+   223→  font-family: 'CustomFont-Fallback';
+   224→  src: local('Arial');
+   225→  size-adjust: 105%;        /* Scale to match x-height */
+   226→  ascent-override: 90%;     /* Match ascender height */
+   227→  descent-override: 20%;    /* Match descender depth */
+   228→  line-gap-override: 10%;   /* Match line spacing */
+   229→}
+   230→
+   231→body {
+   232→  font-family: 'CustomFont', 'CustomFont-Fallback', sans-serif;
+   233→}
+   234→```
+   235→
+   236→Tools like [Fontaine](https://github.com/unjs/fontaine) calculate these overrides automatically.
+   237→
+   238→## Modern Web Typography
+   239→
+   240→### Fluid Type
+   241→
+   242→Fluid typography via `clamp(min, preferred, max)` scales text smoothly with the viewport. The middle value (e.g., `5vw + 1rem`) controls scaling rate—higher vw = faster scaling. Add a rem offset so it doesn't collapse to 0 on small screens.
+   243→
+   244→**Use fluid type for**: Headings and display text on marketing/content pages where text dominates the layout and needs to breathe across viewport sizes.
+   245→
+   246→**Use fixed `rem` scales for**: App UIs, dashboards, and data-dense interfaces. No major app design system (Material, Polaris, Primer, Carbon) uses fluid type in product UI — fixed scales with optional breakpoint adjustments give the spatial predictability that container-based layouts need. Body text should also be fixed even on marketing pages, since the size difference across viewports is too small to warrant it.
+   247→
+   248→### OpenType Features
+   249→
+   250→Most developers don't know these exist. Use them for polish:
+   251→
+   252→```css
+   253→/* Tabular numbers for data alignment */
+   254→.data-table { font-variant-numeric: tabular-nums; }
+   255→
+   256→/* Proper fractions */
+   257→.recipe-amount { font-variant-numeric: diagonal-fractions; }
+   258→
+   259→/* Small caps for abbreviations */
+   260→abbr { font-variant-caps: all-small-caps; }
+   261→
+   262→/* Disable ligatures in code */
+   263→code { font-variant-ligatures: none; }
+   264→
+   265→/* Enable kerning (usually on by default, but be explicit) */
+   266→body { font-kerning: normal; }
+   267→```
+   268→
+   269→Check what features your font supports at [Wakamai Fondue](https://wakamaifondue.com/).
+   270→
+   271→## Typography System Architecture
+   272→
+   273→Name tokens semantically (`--text-body`, `--text-heading`), not by value (`--font-size-16`). Include font stacks, size scale, weights, line-heights, and letter-spacing in your token system.
+   274→
+   275→## Accessibility Considerations
+   276→
+   277→Beyond contrast ratios (which are well-documented), consider:
+   278→
+   279→- **Never disable zoom**: `user-scalable=no` breaks accessibility. If your layout breaks at 200% zoom, fix the layout.
+   280→- **Use rem/em for font sizes**: This respects user browser settings. Never `px` for body text.
+   281→- **Minimum 16px body text**: Smaller than this strains eyes and fails WCAG on mobile.
+   282→- **Adequate touch targets**: Text links need padding or line-height that creates 44px+ tap targets.
+   283→
+   284→---
+   285→
+   286→**Avoid**: More than 2-3 font families per project. Skipping fallback font definitions. Ignoring font loading performance (FOUT/FOIT). Using decorative fonts for body text.
+   287→
+   288→---
+   289→
+   290→# Reference: color-and-contrast
+   291→
+   292→# Color & Contrast
+   293→
+   294→## Color Spaces: Use OKLCH
+   295→
+   296→**Stop using HSL.** Use OKLCH (or LCH) instead. It's perceptually uniform, meaning equal steps in lightness *look* equal—unlike HSL where 50% lightness in yellow looks bright while 50% in blue looks dark.
+   297→
+   298→```css
+   299→/* OKLCH: lightness (0-100%), chroma (0-0.4+), hue (0-360) */
+   300→--color-primary: oklch(60% 0.15 250);      /* Blue */
+   301→--color-primary-light: oklch(85% 0.08 250); /* Same hue, lighter */
+   302→--color-primary-dark: oklch(35% 0.12 250);  /* Same hue, darker */
+   303→```
+   304→
+   305→**Key insight**: As you move toward white or black, reduce chroma (saturation). High chroma at extreme lightness looks garish. A light blue at 85% lightness needs ~0.08 chroma, not the 0.15 of your base color.
+   306→
+   307→## Building Functional Palettes
+   308→
+   309→### The Tinted Neutral Trap
+   310→
+   311→**Pure gray is dead.** Add a subtle hint of your brand hue to all neutrals:
+   312→
+   313→```css
+   314→/* Dead grays */
+   315→--gray-100: oklch(95% 0 0);     /* No personality */
+   316→--gray-900: oklch(15% 0 0);
+   317→
+   318→/* Warm-tinted grays (add brand warmth) */
+   319→--gray-100: oklch(95% 0.01 60);  /* Hint of warmth */
+   320→--gray-900: oklch(15% 0.01 60);
+   321→
+   322→/* Cool-tinted grays (tech, professional) */
+   323→--gray-100: oklch(95% 0.01 250); /* Hint of blue */
+   324→--gray-900: oklch(15% 0.01 250);
+   325→```
+   326→
+   327→The chroma is tiny (0.01) but perceptible. It creates subconscious cohesion between your brand color and your UI.
+   328→
+   329→### Palette Structure
+   330→
+   331→A complete system needs:
+   332→
+   333→| Role | Purpose | Example |
+   334→|------|---------|---------|
+   335→| **Primary** | Brand, CTAs, key actions | 1 color, 3-5 shades |
+   336→| **Neutral** | Text, backgrounds, borders | 9-11 shade scale |
+   337→| **Semantic** | Success, error, warning, info | 4 colors, 2-3 shades each |
+   338→| **Surface** | Cards, modals, overlays | 2-3 elevation levels |
+   339→
+   340→**Skip secondary/tertiary unless you need them.** Most apps work fine with one accent color. Adding more creates decision fatigue and visual noise.
+   341→
+   342→### The 60-30-10 Rule (Applied Correctly)
+   343→
+   344→This rule is about **visual weight**, not pixel count:
+   345→
+   346→- **60%**: Neutral backgrounds, white space, base surfaces
+   347→- **30%**: Secondary colors—text, borders, inactive states
+   348→- **10%**: Accent—CTAs, highlights, focus states
+   349→
+   350→The common mistake: using the accent color everywhere because it's "the brand color." Accent colors work *because* they're rare. Overuse kills their power.
+   351→
+   352→## Contrast & Accessibility
+   353→
+   354→### WCAG Requirements
+   355→
+   356→| Content Type | AA Minimum | AAA Target |
+   357→|--------------|------------|------------|
+   358→| Body text | 4.5:1 | 7:1 |
+   359→| Large text (18px+ or 14px bold) | 3:1 | 4.5:1 |
+   360→| UI components, icons | 3:1 | 4.5:1 |
+   361→| Non-essential decorations | None | None |
+   362→
+   363→**The gotcha**: Placeholder text still needs 4.5:1. That light gray placeholder you see everywhere? Usually fails WCAG.
+   364→
+   365→### Dangerous Color Combinations
+   366→
+   367→These commonly fail contrast or cause readability issues:
+   368→
+   369→- Light gray text on white (the #1 accessibility fail)
+   370→- **Gray text on any colored background**—gray looks washed out and dead on color. Use a darker shade of the background color, or transparency
+   371→- Red text on green background (or vice versa)—8% of men can't distinguish these
+   372→- Blue text on red background (vibrates visually)
+   373→- Yellow text on white (almost always fails)
+   374→- Thin light text on images (unpredictable contrast)
+   375→
+   376→### Never Use Pure Gray or Pure Black
+   377→
+   378→Pure gray (`oklch(50% 0 0)`) and pure black (`#000`) don't exist in nature—real shadows and surfaces always have a color cast. Even a chroma of 0.005-0.01 is enough to feel natural without being obviously tinted. (See tinted neutrals example above.)
+   379→
+   380→### Testing
+   381→
+   382→Don't trust your eyes. Use tools:
+   383→
+   384→- [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/)
+   385→- Browser DevTools → Rendering → Emulate vision deficiencies
+   386→- [Polypane](https://polypane.app/) for real-time testing
+   387→
+   388→## Theming: Light & Dark Mode
+   389→
+   390→### Dark Mode Is Not Inverted Light Mode
+   391→
+   392→You can't just swap colors. Dark mode requires different design decisions:
+   393→
+   394→| Light Mode | Dark Mode |
+   395→|------------|-----------|
+   396→| Shadows for depth | Lighter surfaces for depth (no shadows) |
+   397→| Dark text on light | Light text on dark (reduce font weight) |
+   398→| Vibrant accents | Desaturate accents slightly |
+   399→| White backgrounds | Never pure black—use dark gray (oklch 12-18%) |
+   400→
+   401→```css
+   402→/* Dark mode depth via surface color, not shadow */
+   403→:root[data-theme="dark"] {
+   404→  --surface-1: oklch(15% 0.01 250);
+   405→  --surface-2: oklch(20% 0.01 250);  /* "Higher" = lighter */
+   406→  --surface-3: oklch(25% 0.01 250);
+   407→
+   408→  /* Reduce text weight slightly */
+   409→  --body-weight: 350;  /* Instead of 400 */
+   410→}
+   411→```
+   412→
+   413→### Token Hierarchy
+   414→
+   415→Use two layers: primitive tokens (`--blue-500`) and semantic tokens (`--color-primary: var(--blue-500)`). For dark mode, only redefine the semantic layer—primitives stay the same.
+   416→
+   417→## Alpha Is A Design Smell
+   418→
+   419→Heavy use of transparency (rgba, hsla) usually means an incomplete palette. Alpha creates unpredictable contrast, performance overhead, and inconsistency. Define explicit overlay colors for each context instead. Exception: focus rings and interactive states where see-through is needed.
+   420→
+   421→---
+   422→
+   423→**Avoid**: Relying on color alone to convey information. Creating palettes without clear roles for each color. Using pure black (#000) for large areas. Skipping color blindness testing (8% of men affected).
+   424→
+   425→---
+   426→
+   427→# Reference: spatial-design
+   428→
+   429→# Spatial Design
+   430→
+   431→## Spacing Systems
+   432→
+   433→### Use 4pt Base, Not 8pt
+   434→
+   435→8pt systems are too coarse—you'll frequently need 12px (between 8 and 16). Use 4pt for granularity: 4, 8, 12, 16, 24, 32, 48, 64, 96px.
+   436→
+   437→### Name Tokens Semantically
+   438→
+   439→Name by relationship (`--space-sm`, `--space-lg`), not value (`--spacing-8`). Use `gap` instead of margins for sibling spacing—it eliminates margin collapse and cleanup hacks.
+   440→
+   441→## Grid Systems
+   442→
+   443→### The Self-Adjusting Grid
+   444→
+   445→Use `repeat(auto-fit, minmax(280px, 1fr))` for responsive grids without breakpoints. Columns are at least 280px, as many as fit per row, leftovers stretch. For complex layouts, use named grid areas (`grid-template-areas`) and redefine them at breakpoints.
+   446→
+   447→## Visual Hierarchy
+   448→
+   449→### The Squint Test
+   450→
+   451→Blur your eyes (or screenshot and blur). Can you still identify:
+   452→- The most important element?
+   453→- The second most important?
+   454→- Clear groupings?
+   455→
+   456→If everything looks the same weight blurred, you have a hierarchy problem.
+   457→
+   458→### Hierarchy Through Multiple Dimensions
+   459→
+   460→Don't rely on size alone. Combine:
+   461→
+   462→| Tool | Strong Hierarchy | Weak Hierarchy |
+   463→|------|------------------|----------------|
+   464→| **Size** | 3:1 ratio or more | <2:1 ratio |
+   465→| **Weight** | Bold vs Regular | Medium vs Regular |
+   466→| **Color** | High contrast | Similar tones |
+   467→| **Position** | Top/left (primary) | Bottom/right |
+   468→| **Space** | Surrounded by white space | Crowded |
+   469→
+   470→**The best hierarchy uses 2-3 dimensions at once**: A heading that's larger, bolder, AND has more space above it.
+   471→
+   472→### Cards Are Not Required
+   473→
+   474→Cards are overused. Spacing and alignment create visual grouping naturally. Use cards only when content is truly distinct and actionable, items need visual comparison in a grid, or content needs clear interaction boundaries. **Never nest cards inside cards**—use spacing, typography, and subtle dividers for hierarchy within a card.
+   475→
+   476→## Container Queries
+   477→
+   478→Viewport queries are for page layouts. **Container queries are for components**:
+   479→
+   480→```css
+   481→.card-container {
+   482→  container-type: inline-size;
+   483→}
+   484→
+   485→.card {
+   486→  display: grid;
+   487→  gap: var(--space-md);
+   488→}
+   489→
+   490→/* Card layout changes based on its container, not viewport */
+   491→@container (min-width: 400px) {
+   492→  .card {
+   493→    grid-template-columns: 120px 1fr;
+   494→  }
+   495→}
+   496→```
+   497→
+   498→**Why this matters**: A card in a narrow sidebar stays compact, while the same card in a main content area expands—automatically, without viewport hacks.
+   499→
+   500→## Optical Adjustments
+   501→
+   502→Text at `margin-left: 0` looks indented due to letterform whitespace—use negative margin (`-0.05em`) to optically align. Geometrically centered icons often look off-center; play icons need to shift right, arrows shift toward their direction.
+   503→
+   504→### Touch Targets vs Visual Size
+   505→
+   506→Buttons can look small but need large touch targets (44px minimum). Use padding or pseudo-elements:
+   507→
+   508→```css
+   509→.icon-button {
+   510→  width: 24px;  /* Visual size */
+   511→  height: 24px;
+   512→  position: relative;
+   513→}
+   514→
+   515→.icon-button::before {
+   516→  content: '';
+   517→  position: absolute;
+   518→  inset: -10px;  /* Expand tap target to 44px */
+   519→}
+   520→```
+   521→
+   522→## Depth & Elevation
+   523→
+   524→Create semantic z-index scales (dropdown → sticky → modal-backdrop → modal → toast → tooltip) instead of arbitrary numbers. For shadows, create a consistent elevation scale (sm → md → lg → xl). **Key insight**: Shadows should be subtle—if you can clearly see it, it's probably too strong.
+   525→
+   526→---
+   527→
+   528→**Avoid**: Arbitrary spacing values outside your scale. Making all spacing equal (variety creates hierarchy). Creating hierarchy through size alone - combine size, weight, color, and space.
+   529→
+   530→---
+   531→
+   532→# Reference: motion-design
+   533→
+   534→# Motion Design
+   535→
+   536→## Duration: The 100/300/500 Rule
+   537→
+   538→Timing matters more than easing. These durations feel right for most UI:
+   539→
+   540→| Duration | Use Case | Examples |
+   541→|----------|----------|----------|
+   542→| **100-150ms** | Instant feedback | Button press, toggle, color change |
+   543→| **200-300ms** | State changes | Menu open, tooltip, hover states |
+   544→| **300-500ms** | Layout changes | Accordion, modal, drawer |
+   545→| **500-800ms** | Entrance animations | Page load, hero reveals |
+   546→
+   547→**Exit animations are faster than entrances**—use ~75% of enter duration.
+   548→
+   549→## Easing: Pick the Right Curve
+   550→
+   551→**Don't use `ease`.** It's a compromise that's rarely optimal. Instead:
+   552→
+   553→| Curve | Use For | CSS |
+   554→|-------|---------|-----|
+   555→| **ease-out** | Elements entering | `cubic-bezier(0.16, 1, 0.3, 1)` |
+   556→| **ease-in** | Elements leaving | `cubic-bezier(0.7, 0, 0.84, 0)` |
+   557→| **ease-in-out** | State toggles (there → back) | `cubic-bezier(0.65, 0, 0.35, 1)` |
+   558→
+   559→**For micro-interactions, use exponential curves**—they feel natural because they mimic real physics (friction, deceleration):
+   560→
+   561→```css
+   562→/* Quart out - smooth, refined (recommended default) */
+   563→--ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+   564→
+   565→/* Quint out - slightly more dramatic */
+   566→--ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+   567→
+   568→/* Expo out - snappy, confident */
+   569→--ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+   570→```
+   571→
+   572→**Avoid bounce and elastic curves.** They were trendy in 2015 but now feel tacky and amateurish. Real objects don't bounce when they stop—they decelerate smoothly. Overshoot effects draw attention to the animation itself rather than the content.
+   573→
+   574→## The Only Two Properties You Should Animate
+   575→
+   576→**transform** and **opacity** only—everything else causes layout recalculation. For height animations (accordions), use `grid-template-rows: 0fr → 1fr` instead of animating `height` directly.
+   577→
+   578→## Staggered Animations
+   579→
+   580→Use CSS custom properties for cleaner stagger: `animation-delay: calc(var(--i, 0) * 50ms)` with `style="--i: 0"` on each item. **Cap total stagger time**—10 items at 50ms = 500ms total. For many items, reduce per-item delay or cap staggered count.
+   581→
+   582→## Reduced Motion
+   583→
+   584→This is not optional. Vestibular disorders affect ~35% of adults over 40.
+   585→
+   586→```css
+   587→/* Define animations normally */
+   588→.card {
+   589→  animation: slide-up 500ms ease-out;
+   590→}
+   591→
+   592→/* Provide alternative for reduced motion */
+   593→@media (prefers-reduced-motion: reduce) {
+   594→  .card {
+   595→    animation: fade-in 200ms ease-out;  /* Crossfade instead of motion */
+   596→  }
+   597→}
+   598→
+   599→/* Or disable entirely */
+   600→@media (prefers-reduced-motion: reduce) {
+   601→  *, *::before, *::after {
+   602→    animation-duration: 0.01ms !important;
+   603→    transition-duration: 0.01ms !important;
+   604→  }
+   605→}
+   606→```
+   607→
+   608→**What to preserve**: Functional animations like progress bars, loading spinners (slowed down), and focus indicators should still work—just without spatial movement.
+   609→
+   610→## Perceived Performance
+   611→
+   612→**Nobody cares how fast your site is—just how fast it feels.** Perception can be as effective as actual performance.
+   613→
+   614→**The 80ms threshold**: Our brains buffer sensory input for ~80ms to synchronize perception. Anything under 80ms feels instant and simultaneous. This is your target for micro-interactions.
+   615→
+   616→**Active vs passive time**: Passive waiting (staring at a spinner) feels longer than active engagement. Strategies to shift the balance:
+   617→
+   618→- **Preemptive start**: Begin transitions immediately while loading (iOS app zoom, skeleton UI). Users perceive work happening.
+   619→- **Early completion**: Show content progressively—don't wait for everything. Video buffering, progressive images, streaming HTML.
+   620→- **Optimistic UI**: Update the interface immediately, handle failures gracefully. Instagram likes work offline—the UI updates instantly, syncs later. Use for low-stakes actions; avoid for payments or destructive operations.
+   621→
+   622→**Easing affects perceived duration**: Ease-in (accelerating toward completion) makes tasks feel shorter because the peak-end effect weights final moments heavily. Ease-out feels satisfying for entrances, but ease-in toward a task's end compresses perceived time.
+   623→
+   624→**Caution**: Too-fast responses can decrease perceived value. Users may distrust instant results for complex operations (search, analysis). Sometimes a brief delay signals "real work" is happening.
+   625→
+   626→## Performance
+   627→
+   628→Don't use `will-change` preemptively—only when animation is imminent (`:hover`, `.animating`). For scroll-triggered animations, use Intersection Observer instead of scroll events; unobserve after animating once. Create motion tokens for consistency (durations, easings, common transitions).
+   629→
+   630→---
+   631→
+   632→**Avoid**: Animating everything (animation fatigue is real). Using >500ms for UI feedback. Ignoring `prefers-reduced-motion`. Using animation to hide slow loading.
+   633→
+   634→---
+   635→
+   636→# Reference: interaction-design
+   637→
+   638→# Interaction Design
+   639→
+   640→## The Eight Interactive States
+   641→
+   642→Every interactive element needs these states designed:
+   643→
+   644→| State | When | Visual Treatment |
+   645→|-------|------|------------------|
+   646→| **Default** | At rest | Base styling |
+   647→| **Hover** | Pointer over (not touch) | Subtle lift, color shift |
+   648→| **Focus** | Keyboard/programmatic focus | Visible ring (see below) |
+   649→| **Active** | Being pressed | Pressed in, darker |
+   650→| **Disabled** | Not interactive | Reduced opacity, no pointer |
+   651→| **Loading** | Processing | Spinner, skeleton |
+   652→| **Error** | Invalid state | Red border, icon, message |
+   653→| **Success** | Completed | Green check, confirmation |
+   654→
+   655→**The common miss**: Designing hover without focus, or vice versa. They're different. Keyboard users never see hover states.
+   656→
+   657→## Focus Rings: Do Them Right
+   658→
+   659→**Never `outline: none` without replacement.** It's an accessibility violation. Instead, use `:focus-visible` to show focus only for keyboard users:
+   660→
+   661→```css
+   662→/* Hide focus ring for mouse/touch */
+   663→button:focus {
+   664→  outline: none;
+   665→}
+   666→
+   667→/* Show focus ring for keyboard */
+   668→button:focus-visible {
+   669→  outline: 2px solid var(--color-accent);
+   670→  outline-offset: 2px;
+   671→}
+   672→```
+   673→
+   674→**Focus ring design**:
+   675→- High contrast (3:1 minimum against adjacent colors)
+   676→- 2-3px thick
+   677→- Offset from element (not inside it)
+   678→- Consistent across all interactive elements
+   679→
+   680→## Form Design: The Non-Obvious
+   681→
+   682→**Placeholders aren't labels**—they disappear on input. Always use visible `<label>` elements. **Validate on blur**, not on every keystroke (exception: password strength). Place errors **below** fields with `aria-describedby` connecting them.
+   683→
+   684→## Loading States
+   685→
+   686→**Optimistic updates**: Show success immediately, rollback on failure. Use for low-stakes actions (likes, follows), not payments or destructive actions. **Skeleton screens > spinners**—they preview content shape and feel faster than generic spinners.
+   687→
+   688→## Modals: The Inert Approach
+   689→
+   690→Focus trapping in modals used to require complex JavaScript. Now use the `inert` attribute:
+   691→
+   692→```html
+   693→<!-- When modal is open -->
+   694→<main inert>
+   695→  <!-- Content behind modal can't be focused or clicked -->
+   696→</main>
+   697→<dialog open>
+   698→  <h2>Modal Title</h2>
+   699→  <!-- Focus stays inside modal -->
+   700→</dialog>
+   701→```
+   702→
+   703→Or use the native `<dialog>` element:
+   704→
+   705→```javascript
+   706→const dialog = document.querySelector('dialog');
+   707→dialog.showModal();  // Opens with focus trap, closes on Escape
+   708→```
+   709→
+   710→## The Popover API
+   711→
+   712→For tooltips, dropdowns, and non-modal overlays, use native popovers:
+   713→
+   714→```html
+   715→<button popovertarget="menu">Open menu</button>
+   716→<div id="menu" popover>
+   717→  <button>Option 1</button>
+   718→  <button>Option 2</button>
+   719→</div>
+   720→```
+   721→
+   722→**Benefits**: Light-dismiss (click outside closes), proper stacking, no z-index wars, accessible by default.
+   723→
+   724→## Dropdown & Overlay Positioning
+   725→
+   726→Dropdowns rendered with `position: absolute` inside a container that has `overflow: hidden` or `overflow: auto` will be clipped. This is the single most common dropdown bug in generated code.
+   727→
+   728→### CSS Anchor Positioning
+   729→
+   730→The modern solution uses the CSS Anchor Positioning API to tether an overlay to its trigger without JavaScript:
+   731→
+   732→```css
+   733→.trigger {
+   734→  anchor-name: --menu-trigger;
+   735→}
+   736→
+   737→.dropdown {
+   738→  position: fixed;
+   739→  position-anchor: --menu-trigger;
+   740→  position-area: block-end span-inline-end;
+   741→  margin-top: 4px;
+   742→}
+   743→
+   744→/* Flip above if no room below */
+   745→@position-try --flip-above {
+   746→  position-area: block-start span-inline-end;
+   747→  margin-bottom: 4px;
+   748→}
+   749→```
+   750→
+   751→Because the dropdown uses `position: fixed`, it escapes any `overflow` clipping on ancestor elements. The `@position-try` block handles viewport edges automatically. **Browser support**: Chrome 125+, Edge 125+. Not yet in Firefox or Safari - use a fallback for those browsers.
+   752→
+   753→### Popover + Anchor Combo
+   754→
+   755→Combining the Popover API with anchor positioning gives you stacking, light-dismiss, accessibility, and correct positioning in one pattern:
+   756→
+   757→```html
+   758→<button popovertarget="menu" class="trigger">Open</button>
+   759→<div id="menu" popover class="dropdown">
+   760→  <button>Option 1</button>
+   761→  <button>Option 2</button>
+   762→</div>
+   763→```
+   764→
+   765→The `popover` attribute places the element in the **top layer**, which sits above all other content regardless of z-index or overflow. No portal needed.
+   766→
+   767→### Portal / Teleport Pattern
+   768→
+   769→In component frameworks, render the dropdown at the document root and position it with JavaScript:
+   770→
+   771→- **React**: `createPortal(dropdown, document.body)`
+   772→- **Vue**: `<Teleport to="body">`
+   773→- **Svelte**: Use a portal library or mount to `document.body`
+   774→
+   775→Calculate position from the trigger's `getBoundingClientRect()`, then apply `position: fixed` with `top` and `left` values. Recalculate on scroll and resize.
+   776→
+   777→### Fixed Positioning Fallback
+   778→
+   779→For browsers without anchor positioning support, `position: fixed` with manual coordinates avoids overflow clipping:
+   780→
+   781→```css
+   782→.dropdown {
+   783→  position: fixed;
+   784→  /* top/left set via JS from trigger's getBoundingClientRect() */
+   785→}
+   786→```
+   787→
+   788→Check viewport boundaries before rendering. If the dropdown would overflow the bottom edge, flip it above the trigger. If it would overflow the right edge, align it to the trigger's right side instead.
+   789→
+   790→### Anti-Patterns
+   791→
+   792→- **`position: absolute` inside `overflow: hidden`** - The dropdown will be clipped. Use `position: fixed` or the top layer instead.
+   793→- **Arbitrary z-index values** like `z-index: 9999` - Use a semantic z-index scale: `dropdown (100) -> sticky (200) -> modal-backdrop (300) -> modal (400) -> toast (500) -> tooltip (600)`.
+   794→- **Rendering dropdown markup inline** without an escape hatch from the parent's stacking context. Either use `popover` (top layer), a portal, or `position: fixed`.
+   795→
+   796→## Destructive Actions: Undo > Confirm
+   797→
+   798→**Undo is better than confirmation dialogs**—users click through confirmations mindlessly. Remove from UI immediately, show undo toast, actually delete after toast expires. Use confirmation only for truly irreversible actions (account deletion), high-cost actions, or batch operations.
+   799→
+   800→## Keyboard Navigation Patterns
+   801→
+   802→### Roving Tabindex
+   803→
+   804→For component groups (tabs, menu items, radio groups), one item is tabbable; arrow keys move within:
+   805→
+   806→```html
+   807→<div role="tablist">
+   808→  <button role="tab" tabindex="0">Tab 1</button>
+   809→  <button role="tab" tabindex="-1">Tab 2</button>
+   810→  <button role="tab" tabindex="-1">Tab 3</button>
+   811→</div>
+   812→```
+   813→
+   814→Arrow keys move `tabindex="0"` between items. Tab moves to the next component entirely.
+   815→
+   816→### Skip Links
+   817→
+   818→Provide skip links (`<a href="#main-content">Skip to main content</a>`) for keyboard users to jump past navigation. Hide off-screen, show on focus.
+   819→
+   820→## Gesture Discoverability
+   821→
+   822→Swipe-to-delete and similar gestures are invisible. Hint at their existence:
+   823→
+   824→- **Partially reveal**: Show delete button peeking from edge
+   825→- **Onboarding**: Coach marks on first use
+   826→- **Alternative**: Always provide a visible fallback (menu with "Delete")
+   827→
+   828→Don't rely on gestures as the only way to perform actions.
+   829→
+   830→---
+   831→
+   832→**Avoid**: Removing focus indicators without alternatives. Using placeholder text as labels. Touch targets <44x44px. Generic error messages. Custom controls without ARIA/keyboard support.
+   833→
+   834→---
+   835→
+   836→# Reference: responsive-design
+   837→
+   838→# Responsive Design
+   839→
+   840→## Mobile-First: Write It Right
+   841→
+   842→Start with base styles for mobile, use `min-width` queries to layer complexity. Desktop-first (`max-width`) means mobile loads unnecessary styles first.
+   843→
+   844→## Breakpoints: Content-Driven
+   845→
+   846→Don't chase device sizes—let content tell you where to break. Start narrow, stretch until design breaks, add breakpoint there. Three breakpoints usually suffice (640, 768, 1024px). Use `clamp()` for fluid values without breakpoints.
+   847→
+   848→## Detect Input Method, Not Just Screen Size
+   849→
+   850→**Screen size doesn't tell you input method.** A laptop with touchscreen, a tablet with keyboard—use pointer and hover queries:
+   851→
+   852→```css
+   853→/* Fine pointer (mouse, trackpad) */
+   854→@media (pointer: fine) {
+   855→  .button { padding: 8px 16px; }
+   856→}
+   857→
+   858→/* Coarse pointer (touch, stylus) */
+   859→@media (pointer: coarse) {
+   860→  .button { padding: 12px 20px; }  /* Larger touch target */
+   861→}
+   862→
+   863→/* Device supports hover */
+   864→@media (hover: hover) {
+   865→  .card:hover { transform: translateY(-2px); }
+   866→}
+   867→
+   868→/* Device doesn't support hover (touch) */
+   869→@media (hover: none) {
+   870→  .card { /* No hover state - use active instead */ }
+   871→}
+   872→```
+   873→
+   874→**Critical**: Don't rely on hover for functionality. Touch users can't hover.
+   875→
+   876→## Safe Areas: Handle the Notch
+   877→
+   878→Modern phones have notches, rounded corners, and home indicators. Use `env()`:
+   879→
+   880→```css
+   881→body {
+   882→  padding-top: env(safe-area-inset-top);
+   883→  padding-bottom: env(safe-area-inset-bottom);
+   884→  padding-left: env(safe-area-inset-left);
+   885→  padding-right: env(safe-area-inset-right);
+   886→}
+   887→
+   888→/* With fallback */
+   889→.footer {
+   890→  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+   891→}
+   892→```
+   893→
+   894→**Enable viewport-fit** in your meta tag:
+   895→```html
+   896→<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+   897→```
+   898→
+   899→## Responsive Images: Get It Right
+   900→
+   901→### srcset with Width Descriptors
+   902→
+   903→```html
+   904→<img
+   905→  src="hero-800.jpg"
+   906→  srcset="
+   907→    hero-400.jpg 400w,
+   908→    hero-800.jpg 800w,
+   909→    hero-1200.jpg 1200w
+   910→  "
+   911→  sizes="(max-width: 768px) 100vw, 50vw"
+   912→  alt="Hero image"
+   913→>
+   914→```
+   915→
+   916→**How it works**:
+   917→- `srcset` lists available images with their actual widths (`w` descriptors)
+   918→- `sizes` tells the browser how wide the image will display
+   919→- Browser picks the best file based on viewport width AND device pixel ratio
+   920→
+   921→### Picture Element for Art Direction
+   922→
+   923→When you need different crops/compositions (not just resolutions):
+   924→
+   925→```html
+   926→<picture>
+   927→  <source media="(min-width: 768px)" srcset="wide.jpg">
+   928→  <source media="(max-width: 767px)" srcset="tall.jpg">
+   929→  <img src="fallback.jpg" alt="...">
+   930→</picture>
+   931→```
+   932→
+   933→## Layout Adaptation Patterns
+   934→
+   935→**Navigation**: Three stages—hamburger + drawer on mobile, horizontal compact on tablet, full with labels on desktop. **Tables**: Transform to cards on mobile using `display: block` and `data-label` attributes. **Progressive disclosure**: Use `<details>/<summary>` for content that can collapse on mobile.
+   936→
+   937→## Testing: Don't Trust DevTools Alone
+   938→
+   939→DevTools device emulation is useful for layout but misses:
+   940→
+   941→- Actual touch interactions
+   942→- Real CPU/memory constraints
+   943→- Network latency patterns
+   944→- Font rendering differences
+   945→- Browser chrome/keyboard appearances
+   946→
+   947→**Test on at least**: One real iPhone, one real Android, a tablet if relevant. Cheap Android phones reveal performance issues you'll never see on simulators.
+   948→
+   949→---
+   950→
+   951→**Avoid**: Desktop-first design. Device detection instead of feature detection. Separate mobile/desktop codebases. Ignoring tablet and landscape. Assuming all mobile devices are powerful.
+   952→
+   953→---
+   954→
+   955→# Reference: ux-writing
+   956→
+   957→# UX Writing
+   958→
+   959→## The Button Label Problem
+   960→
+   961→**Never use "OK", "Submit", or "Yes/No".** These are lazy and ambiguous. Use specific verb + object patterns:
+   962→
+   963→| Bad | Good | Why |
+   964→|-----|------|-----|
+   965→| OK | Save changes | Says what will happen |
+   966→| Submit | Create account | Outcome-focused |
+   967→| Yes | Delete message | Confirms the action |
+   968→| Cancel | Keep editing | Clarifies what "cancel" means |
+   969→| Click here | Download PDF | Describes the destination |
+   970→
+   971→**For destructive actions**, name the destruction:
+   972→- "Delete" not "Remove" (delete is permanent, remove implies recoverable)
+   973→- "Delete 5 items" not "Delete selected" (show the count)
+   974→
+   975→## Error Messages: The Formula
+   976→
+   977→Every error message should answer: (1) What happened? (2) Why? (3) How to fix it? Example: "Email address isn't valid. Please include an @ symbol." not "Invalid input".
+   978→
+   979→### Error Message Templates
+   980→
+   981→| Situation | Template |
+   982→|-----------|----------|
+   983→| **Format error** | "[Field] needs to be [format]. Example: [example]" |
+   984→| **Missing required** | "Please enter [what's missing]" |
+   985→| **Permission denied** | "You don't have access to [thing]. [What to do instead]" |
+   986→| **Network error** | "We couldn't reach [thing]. Check your connection and [action]." |
+   987→| **Server error** | "Something went wrong on our end. We're looking into it. [Alternative action]" |
+   988→
+   989→### Don't Blame the User
+   990→
+   991→Reframe errors: "Please enter a date in MM/DD/YYYY format" not "You entered an invalid date".
+   992→
+   993→## Empty States Are Opportunities
+   994→
+   995→Empty states are onboarding moments: (1) Acknowledge briefly, (2) Explain the value of filling it, (3) Provide a clear action. "No projects yet. Create your first one to get started." not just "No items".
+   996→
+   997→## Voice vs Tone
+   998→
+   999→**Voice** is your brand's personality—consistent everywhere.
+  1000→**Tone** adapts to the moment.
+  1001→
+  1002→| Moment | Tone Shift |
+  1003→|--------|------------|
+  1004→| Success | Celebratory, brief: "Done! Your changes are live." |
+  1005→| Error | Empathetic, helpful: "That didn't work. Here's what to try..." |
+  1006→| Loading | Reassuring: "Saving your work..." |
+  1007→| Destructive confirm | Serious, clear: "Delete this project? This can't be undone." |
+  1008→
+  1009→**Never use humor for errors.** Users are already frustrated. Be helpful, not cute.
+  1010→
+  1011→## Writing for Accessibility
+  1012→
+  1013→**Link text** must have standalone meaning—"View pricing plans" not "Click here". **Alt text** describes information, not the image—"Revenue increased 40% in Q4" not "Chart". Use `alt=""` for decorative images. **Icon buttons** need `aria-label` for screen reader context.
+  1014→
+  1015→## Writing for Translation
+  1016→
+  1017→### Plan for Expansion
+  1018→
+  1019→German text is ~30% longer than English. Allocate space:
+  1020→
+  1021→| Language | Expansion |
+  1022→|----------|-----------|
+  1023→| German | +30% |
+  1024→| French | +20% |
+  1025→| Finnish | +30-40% |
+  1026→| Chinese | -30% (fewer chars, but same width) |
+  1027→
+  1028→### Translation-Friendly Patterns
+  1029→
+  1030→Keep numbers separate ("New messages: 3" not "You have 3 new messages"). Use full sentences as single strings (word order varies by language). Avoid abbreviations ("5 minutes ago" not "5 mins ago"). Give translators context about where strings appear.
+  1031→
+  1032→## Consistency: The Terminology Problem
+  1033→
+  1034→Pick one term and stick with it:
+  1035→
+  1036→| Inconsistent | Consistent |
+  1037→|--------------|------------|
+  1038→| Delete / Remove / Trash | Delete |
+  1039→| Settings / Preferences / Options | Settings |
+  1040→| Sign in / Log in / Enter | Sign in |
+  1041→| Create / Add / New | Create |
+  1042→
+  1043→Build a terminology glossary and enforce it. Variety creates confusion.
+  1044→
+  1045→## Avoid Redundant Copy
+  1046→
+  1047→If the heading explains it, the intro is redundant. If the button is clear, don't explain it again. Say it once, say it well.
+  1048→
+  1049→## Loading States
+  1050→
+  1051→Be specific: "Saving your draft..." not "Loading...". For long waits, set expectations ("This usually takes 30 seconds") or show progress.
+  1052→
+  1053→## Confirmation Dialogs: Use Sparingly
+  1054→
+  1055→Most confirmation dialogs are design failures—consider undo instead. When you must confirm: name the action, explain consequences, use specific button labels ("Delete project" / "Keep project", not "Yes" / "No").
+  1056→
+  1057→## Form Instructions
+  1058→
+  1059→Show format with placeholders, not instructions. For non-obvious fields, explain why you're asking.
+  1060→
+  1061→---
+  1062→
+  1063→**Avoid**: Jargon without explanation. Blaming users ("You made an error" → "This field is required"). Vague errors ("Something went wrong"). Varying terminology for variety. Humor for errors.
+  1064→
+  1065→---
+  1066→
+  1067→## Attribution
+  1068→
+  1069→Created by **Paul Bakaus** ([@pbakaus](https://twitter.com/nickerbocker)).
+  1070→Source: [github.com/pbakaus/impeccable](https://github.com/pbakaus/impeccable).
+  1071→Website: [impeccable.style](https://impeccable.style)
+  1072→Packaged for OpenClaw/ClawHub distribution with credit to the original author.
+  1073→

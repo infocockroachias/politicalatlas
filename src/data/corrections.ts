@@ -1,0 +1,68 @@
+import type { Correction } from "./types";
+
+export const corrections: Correction[] = [
+  {
+    id: "corr-1",
+    date: "2026-09-12",
+    entity: "japan",
+    was: "The constitution took effect on 3 November 1946.",
+    now: "The constitution was promulgated on 3 November 1946 and came into force on 3 May 1947.",
+    note: "The promulgation date and the effective date had been conflated; the official texts separate them.",
+  },
+  {
+    id: "corr-2",
+    date: "2026-09-19",
+    entity: "poland",
+    was: "The Constitution of 3 May 1791 remained in force until the partitions.",
+    now: "The Constitution of 3 May 1791 remained in force for some fifteen months, until the war of 1792.",
+    note: "The third partition of 1795 is a separate event; the constitution was suspended after the Targowica confederation.",
+  },
+  {
+    id: "corr-3",
+    date: "2026-09-26",
+    entity: "kenya",
+    was: "Jamhuri Day marks the declaration of the republic in 1964.",
+    now: "Jamhuri Day marks independence on 12 December 1963 and the republic declared on 12 December 1964.",
+    note: "Both anniversaries fall on the same date; the earlier text cited only one.",
+  },
+  {
+    id: "corr-4",
+    date: "2026-10-05",
+    entity: "united-states",
+    was: "The Constitution was signed on 4 July 1776.",
+    now: "The Declaration of Independence was adopted on 4 July 1776; the Constitution was signed on 17 September 1787.",
+    note: "A conflation flagged by three readers in one week; the entry now names both dates and both documents.",
+  },
+  {
+    id: "corr-5",
+    date: "2026-10-14",
+    entity: "south-africa",
+    was: "Apartheid ended in 1990 with the release of Nelson Mandela.",
+    now: "Apartheid legislation was repealed across 1990 and 1991, and the first elections on a universal franchise were held on 27 April 1994.",
+    note: "Release and repeal are distinct events; better sources were added for the repeal timeline.",
+  },
+  {
+    id: "corr-6",
+    date: "2026-10-22",
+    entity: "israel",
+    was: "Independence was declared on 5 Iyar 5708.",
+    now: "Independence was declared on 14 May 1948, corresponding to 5 Iyar 5708 in the Hebrew calendar.",
+    note: "The Gregorian date is primary in the atlas; the Hebrew date is retained in the note.",
+  },
+  {
+    id: "corr-7",
+    date: "2026-11-06",
+    entity: "brazil",
+    was: "Founding Year: 1822.",
+    now: "Independence in 1822 under the empire; the present republic dates from 15 November 1889.",
+    note: "The founding year now distinguishes statehood from the present constitutional order.",
+  },
+  {
+    id: "corr-8",
+    date: "2026-11-11",
+    entity: "france",
+    was: "The constitution of the Fifth Republic was approved on 4 October 1958.",
+    now: "The constitution was approved by referendum on 28 September 1958 and promulgated on 4 October 1958.",
+    note: "Referendum and promulgation are separate steps under the transitional provisions; the entry now cites both.",
+  },
+];
