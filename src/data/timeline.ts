@@ -1,5 +1,4 @@
-// Milestones of Indian political history, 1947-2026. Facts only, written for
-// UPSC revision. Filters: "foundation" | "democracy" | "turning-points" | "recent".
+// Milestones of Indian political history, 1947-2026. Facts only. Filters: "foundation" | "democracy" | "turning-points" | "recent".
 
 export type TimelineEra = "foundation" | "democracy" | "turning-points" | "recent";
 

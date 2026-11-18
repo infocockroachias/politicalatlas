@@ -1,21 +1,60 @@
 "use client";
 
 // Minimal hash router so the whole atlas works from a single static route.
-// Format: #/view  or  #/view/param   (e.g. #/map/KA)
+// Format: #/view  or  #/view/param
 
 export interface Route {
   view: string;
   param?: string;
+  query: URLSearchParams;
 }
 
-const VALID_VIEWS = ["home", "map", "elections", "parties", "timeline", "polity", "quiz", "compare", "about"];
+const VIEWS = new Set([
+  "home",
+  "domains",
+  "category",
+  "atoz",
+  "systems",
+  "entry",
+  "compare",
+  "connections",
+  "trails",
+  "trail",
+  "today",
+  "quizzes",
+  "quiz",
+  "open-questions",
+  "disputed",
+  "cases",
+  "corrections",
+  "recently-added",
+  "campaigns",
+  "embed",
+  "forum",
+  "communities",
+  "about",
+  "account",
+  "news",
+  "faq",
+  "subscribe",
+  "newsletter",
+  "privacy",
+  "terms",
+  "copyright",
+  "accessibility",
+  "reviewers",
+  "contact",
+  "follow",
+]);
 
 export function parseHashFrom(hash: string): Route {
-  const h = hash.replace(/^#\/?/, "");
-  if (!h) return { view: "home" };
-  const [view, param] = h.split("/");
-  if (!view || !VALID_VIEWS.includes(view)) return { view: "home" };
-  return { view, param: param || undefined };
+  const raw = hash.replace(/^#\/?/, "");
+  if (!raw) return { view: "home", query: new URLSearchParams() };
+  const [pathPart, queryPart] = raw.split("?");
+  const query = new URLSearchParams(queryPart ?? "");
+  const [view, param] = pathPart.split("/");
+  if (!view || !VIEWS.has(view)) return { view: "notfound", query };
+  return { view, param: param ? decodeURIComponent(param) : undefined, query };
 }
 
 export function navigate(to: string) {

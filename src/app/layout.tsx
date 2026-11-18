@@ -5,28 +5,30 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  title: "Political Atlas of India — Approaches to IAS",
+  title: "Political Atlas — The Shape of Power | Approaches to IAS",
   description:
-    "An interactive atlas of Indian politics: state-wise election maps, Lok Sabha results (2014-2024), party directory, constitutional notes and practice quizzes — built for UPSC aspirants by Approaches to IAS.",
+    "A cross-referenced atlas of government and political thought: 56 countries, systems of government, ideologies, founding documents, mechanisms, figures, movements and institutions — every fact locally sourced and every page free to read.",
   keywords: [
-    "UPSC", "Indian polity", "Lok Sabha 2024", "political atlas", "approaches to IAS",
-    "elections India", "constitution notes", "UPSC quiz",
+    "political atlas", "systems of government", "constitutions", "political ideologies",
+    "comparative politics", "approaches to IAS", "interactive atlas", "political encyclopedia",
   ],
   authors: [{ name: "Approaches to IAS" }],
   openGraph: {
-    title: "Political Atlas of India — Approaches to IAS",
+    title: "Political Atlas — The Shape of Power",
     description:
-      "Explore how power is arranged in the world's largest democracy — maps, results, parties, polity notes and quizzes for UPSC.",
+      "Every system of power, one connected map of rule. A cross-referenced encyclopedia of government and political thought, published by Approaches to IAS.",
     siteName: "Approaches to IAS",
     type: "website",
   },
 };
 
-const themeInit = `
+const settingsInit = `
 try {
-  var t = localStorage.getItem("atlas-theme");
-  if (!t) t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-  if (t === "dark") document.documentElement.classList.add("dark");
+  var t = localStorage.getItem("atlas-theme") || "system";
+  var dark = t === "dark" || (t === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches);
+  if (dark) document.documentElement.classList.add("dark");
+  var s = localStorage.getItem("atlas-text-scale");
+  if (s) document.documentElement.style.setProperty("--atlas-text-scale", s + "%");
 } catch (e) {}
 `;
 
@@ -38,7 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: themeInit }} />
+        <script dangerouslySetInnerHTML={{ __html: settingsInit }} />
       </head>
       <body className="antialiased bg-background text-foreground">
         {children}

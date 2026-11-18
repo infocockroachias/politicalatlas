@@ -1,29 +1,39 @@
-# The Political Atlas of India — by Approaches to IAS
+# Political Atlas — The Shape of Power
 
-An interactive, exam-oriented atlas of Indian politics for **approachestoias.com** (UPSC
-preparation platform). A **fully static Next.js frontend**: every fact lives in local
-TypeScript data tables — **no API calls, no backend, no database, no tracking**.
+**by Approaches to IAS** ([approachestoias.com](https://www.approachestoias.com)) · *for those who refused to quit.*
 
-![stack](https://img.shields.io/badge/Next.js-16-black) ![stack](https://img.shields.io/badge/TypeScript-5-blue) ![stack](https://img.shields.io/badge/deploy-Vercel-ready-teal)
+A cross-referenced encyclopedia of government and political thought: **266 entries** across
+**56 countries**, systems of government, political mechanisms, policies, ideologies, founding
+documents, concepts, events, movements, figures and institutions — every entry linked to what
+it touches, every claim sourced and tiered, every dispute named rather than smoothed over.
+
+A **fully static Next.js frontend**: every fact lives in local TypeScript data tables —
+**no API calls, no backend, no database, no tracking**. Search, comparison, path-finding and
+quizzes are computed in your browser.
+
+![stack](https://img.shields.io/badge/Next.js-16-black) ![stack](https://img.shields.io/badge/TypeScript-5-blue) ![stack](https://img.shields.io/badge/deploy-Vercel--ready-teal)
 
 ## What's inside
 
 | Section | Contents |
 | --- | --- |
-| **The Map** | 36 states & UTs as interactive tiles — colour by the 2024 Lok Sabha verdict or by who governs each assembly (Nov 2026). Click any tile for seats, alliance split, ruling party/CM and a "UPSC lens" note. |
-| **Election Explorer** | Party-wise seats & vote shares for Lok Sabha 2014 / 2019 / 2024, plus the full state-wise alliance table for 2024 (NDA 293 · INDIA 234 · Others 16 = 543, exact sums). |
-| **Party Directory** | 6 national parties + ~24 regional parties: founders, founding years, bases, current footprint. |
-| **Polity Notes** | 34 exam-calibrated notes on Articles, Schedules, Amendments, doctrines and institutions — each with a prelims pointer. |
-| **Timeline** | Milestones from 1950-52 (Constitution, first general election) through the Emergency, Mandal, GST and the 2026 state verdicts. |
-| **Practice Quiz** | 18 original UPSC-style MCQs with explanations, shuffled each attempt, scored in-browser. |
-| **Compare** | Any two states side by side. |
+| **Home** | Hero search, live stat tiles, domain browser, feature cards, a daily featured cross-section, and the rotating Open Question. |
+| **Explore** | Browse Domains · A to Z Index · All Systems (filterable directory of every entry) · Category pages with **Browse By** facets (world region, head of state, legislature, electoral system, freedom status, democracy band, founding era). |
+| **Countries** | A mega-dropdown selector in the header — 56 countries grouped by region, one click from anywhere. India is the flagship entry with deep modules: a 36-state/UT tile map (2024 Lok Sabha verdict and Nov-2026 assembly positions), the Lok Sabha election explorer (2014–2024), the party directory and the political timeline. |
+| **Entry pages** | Breadcrumbs, verification badges, attested facts with source superscripts, classification columns, **At a Past Year** time-travel for countries, outward + inward **Connections**, a Path Finder teaser, tiered **Sources**, and browser-local notes. |
+| **Discover** | **Compare** any two entities side by side (shared values shaded) · **Path Finder** — the shortest chain of recorded relations between any two entries · **Trails** — eight argued routes through the collection with browser-kept progress · **Today** — the atlas calendar of national and constitutional days. |
+| **Interact** | Quizzes (10 scored quizzes, difficulty and length pickers, in-browser scoring) · Open Questions · Disputed Statements · Cases · Recent Corrections · Recently Added · Campaigns · Forum · Communities · Embed a Card. |
+| **About** | How This Atlas Works · Why Create an Account · News · FAQ · Subscribe · Newsletter Editions · Privacy · Terms · Copyright · Accessibility · Reviewers · Contact · Follow. |
 
 ## Design & copyright posture
 
-- Original design language (ivory-paper editorial style, Fraunces + Instrument Sans, saffron/ink palette) — no third-party design assets.
-- Election results, constitutional articles and historical events are **facts** (compiled from publicly available ECI declared results and assembly verdicts up to May 2026; positions stated "as of November 2026").
-- **Party symbols are not reproduced** — they are ECI-owned artworks. Colour chips stand in for identity.
-- Independent educational project; not affiliated with any government body or other platform.
+- **Original design language**: ivory-paper editorial style, Fraunces + Instrument Sans,
+  Approaches crimson (`#C91C1C` family) on warm ink — no third-party design assets.
+- **Original prose throughout.** No passage is copied from any encyclopaedia or website;
+  facts are compiled from the public reference works each entry names.
+- **No party symbols or state emblems are reproduced** — they are commission-owned artworks.
+- The Approaches "A" mark is recreated as inline SVG for brand consistency with the publisher.
+- Independent educational project; not affiliated with any government body or platform.
 
 ## Run locally
 
@@ -34,7 +44,8 @@ bun run lint
 ```
 
 The whole app is served from a single route (`/`); sections are hash-routed
-(`#/map`, `#/elections/2024`, `#/polity`, `#/quiz`, `#/compare`, …).
+(`#/entry/india`, `#/compare`, `#/trail/ten-leaders`, `#/today`, …), so static hosting
+needs no rewrite rules.
 
 ## Deploy to Vercel
 
@@ -54,18 +65,30 @@ vercel --prod
 
 All content lives in `src/data/`:
 
-- `states.ts` — 36 state/UT entries (map grid positions, LS 2024 alliance splits, assembly status, notes)
-- `elections.ts` — party tables for 2014 / 2019 / 2024
-- `parties.ts`, `timeline.ts`, `polity.ts`, `quiz.ts`
+- `countries-*.ts` — 56 country entries (six standard facts + classification extras + history snapshots)
+- `systems.ts`, `mechanisms.ts`, `policies.ts`, `ideologies.ts`, `concepts.ts`,
+  `documents.ts`, `institutions.ts`, `figures-a.ts`, `figures-b.ts`, `events.ts`, `movements.ts`
+- `quizzes.ts`, `trails.ts`, `open-questions.ts`, `disputed.ts`, `cases.ts`, `corrections.ts`,
+  `campaigns.ts`, `news.ts`, `newsletter.ts`, `communities.ts`, `forum.ts`, `calendar.ts`
+- `categories.ts` — the domain map; `types.ts` — the contract; `SPEC.md` — the authoring spec
 
-Update after each election and the whole atlas follows — charts, map colours and
-tables are derived from these tables at render time.
+Run the validator after editing:
+
+```bash
+npx tsx scripts/validate-data.ts
+```
+
+Charts, facets, the A–Z index, search results and the relation graph are all derived from
+these tables at render time.
 
 ## Tech notes
 
 - Next.js 16 (App Router) + TypeScript + Tailwind CSS 4 + shadcn/ui + framer-motion.
-- Fonts are bundled locally via `@fontsource-variable/*` — **zero runtime network requests** (works offline once loaded).
+- Fonts are bundled locally via `@fontsource-variable/*` — **zero runtime network requests**
+  (works offline once loaded).
 - Hash-based routing means static hosting works with no rewrite rules.
+- Display settings (text size 90–125%, system/light/dark theme) and reader notes are kept in
+  the browser's local storage; nothing is ever sent anywhere.
 
 ## License
 

@@ -1,60 +1,38 @@
 "use client";
 
-import { navigate } from "@/lib/router";
-import { BrandMark } from "./nav";
+import Link from "next/link";
+import { PublisherLine } from "./brand";
+
+const LEGAL = [
+  { label: "Privacy", to: "privacy" },
+  { label: "Terms", to: "terms" },
+  { label: "Copyright", to: "copyright" },
+  { label: "Accessibility", to: "accessibility" },
+  { label: "Cases", to: "cases" },
+  { label: "Reviewers", to: "reviewers" },
+  { label: "News", to: "news" },
+  { label: "Follow", to: "follow" },
+  { label: "Contact", to: "contact" },
+];
 
 export function Footer() {
-  const go = (view: string) => navigate(view);
   return (
-    <footer className="mt-auto border-t border-border/70 bg-secondary/40">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-[1.3fr_1fr_1.2fr]">
-        <div>
-          <div className="flex items-center gap-3">
-            <BrandMark size={30} />
-            <span>
-              <span className="eyebrow block">Approaches to IAS</span>
-              <span className="display block text-lg">Political Atlas of India</span>
-            </span>
-          </div>
-          <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
-            An interactive, exam-oriented atlas of Indian politics — maps, election results,
-            party profiles and constitutional notes, all stored locally in your browser session.
-            No accounts, no tracking, no server calls.
-          </p>
-        </div>
-
-        <div>
-          <h3 className="eyebrow mb-3">Atlas sections</h3>
-          <ul className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm text-muted-foreground">
-            {[
-              ["map", "Interactive map"], ["elections", "Election explorer"],
-              ["parties", "Party directory"], ["timeline", "Political timeline"],
-              ["polity", "Polity notes"], ["quiz", "Practice quiz"],
-              ["compare", "State compare"], ["about", "About & sources"],
-            ].map(([v, label]) => (
-              <li key={v}>
-                <button className="hover:text-foreground" onClick={() => go(v)}>{label}</button>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <h3 className="eyebrow mb-3">Data & disclaimer</h3>
-          <p className="text-sm leading-relaxed text-muted-foreground">
-            Election figures are compiled from publicly available Election Commission of India
-            declared results and assembly verdicts up to May 2026 (positions as of November 2026).
-            All design, code and explanatory notes are original. Party symbols are ECI-owned
-            artworks and are intentionally not reproduced. Educational use only — verify against
-            the latest official notifications.
-          </p>
-        </div>
-      </div>
-      <div className="border-t border-border/70">
-        <div className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:px-6">
-          <span>© 2026 Approaches to IAS · approachestoias.com</span>
-          <span>Built as a fully static, frontend-only application — zero API calls.</span>
-        </div>
+    <footer className="mt-20 border-t border-border/80 bg-card/50">
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
+        <PublisherLine />
+        <nav aria-label="Legal and Contact" className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
+          {LEGAL.map((l) => (
+            <Link key={l.to} href={`#/${l.to}`} className="text-[0.8125rem] text-muted-foreground hover:text-brand hover:underline underline-offset-2">
+              {l.label}
+            </Link>
+          ))}
+        </nav>
+        <p className="mt-5 max-w-3xl text-[0.75rem] leading-relaxed text-muted-foreground">
+          An independent educational atlas. Election results, constitutional provisions and historical
+          events are facts, compiled from public reference works; every entry names its sources and
+          marks what is contested. Party symbols and state emblems are not reproduced. Not affiliated
+          with any government body.
+        </p>
       </div>
     </footer>
   );

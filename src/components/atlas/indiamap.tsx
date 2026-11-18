@@ -170,8 +170,8 @@ export function StatePanel({ s, mode }: { s: StateEntry; mode: MapMode }) {
       )}
 
       <div className="mt-4 rounded-xl border px-4 py-3"
-        style={{ borderColor: `color-mix(in oklch, var(--a-nda) 35%, var(--border))`, background: `color-mix(in oklch, var(--a-nda) 8%, var(--card))` }}>
-        <div className="eyebrow mb-1" style={{ color: "var(--a-nda)" }}>UPSC lens</div>
+        style={{ borderColor: `color-mix(in oklch, var(--a-oth) 30%, var(--border))`, background: `color-mix(in oklch, var(--a-oth) 7%, var(--card))` }}>
+        <div className="eyebrow mb-1" style={{ color: "var(--a-oth)" }}>Note</div>
         <p className="text-[0.82rem] leading-relaxed text-foreground/85">{s.note}</p>
       </div>
     </motion.aside>
