@@ -424,6 +424,37 @@ export const observances: Observance[] = [
       "The Brazilian monarchy ended and the republic was proclaimed on 15 November 1889. The brazil entry records the change of regime.",
   },
   {
+    monthDay: "11-16",
+    year: 1995,
+    title: "International Day for Tolerance",
+    blurb:
+      "Declared by UNESCO's member states in 1995, the day marks the organisation's Declaration of Principles on Tolerance. The atlas ties it to the consociationalism entry, where tolerance is engineered into institutions.",
+  },
+  {
+    monthDay: "11-20",
+    year: 1989,
+    title: "Universal Children's Day",
+    entity: "united-nations",
+    blurb:
+      "The General Assembly adopted the Declaration of the Rights of the Child on 20 November 1959 and the Convention on the Rights of the Child on the same date in 1989.",
+  },
+  {
+    monthDay: "11-25",
+    year: 1999,
+    title: "International Day for the Elimination of Violence against Women",
+    entity: "feminism",
+    blurb:
+      "The date honours the Mirabal sisters, murdered in 1960, and the UN day has been marked since 1999. The feminism entry records the movement's institutional turn.",
+  },
+  {
+    monthDay: "11-26",
+    year: 1949,
+    title: "Constitution Day (India)",
+    entity: "constitution-of-india",
+    blurb:
+      "The Constituent Assembly adopted the Constitution of India on 26 November 1949; it came into force two months later, on 26 January 1950, the day celebrated as Republic Day.",
+  },
+  {
     monthDay: "12-09",
     year: 1948,
     title: "International Day of Commemoration and Dignity of the Victims of Genocide",
